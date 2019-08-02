@@ -48,11 +48,8 @@ app.get('/accountdashboard', function(req, res){
 app.post('/accountdashboard', urlencodedParser ,function(req, res){
   console.log(req.body.search);
   var u;
-  const q = User.findOne({email: req.body.search}).then(function(result){
-      do{
-        u = result;
-      } while(u === undefined);
-      console.log(u);
+  User.findOne({email: req.body.search}).then(function(result){
+      u = result;
       res.render('searchedAccount', {user: u});
   });
 });
