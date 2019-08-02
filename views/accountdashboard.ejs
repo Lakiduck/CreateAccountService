@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Account Dashboard</title>
+  </head>
+  <body>
+    <ul>
+      <% users.forEach(function(user){ %>
+        <li> User: <%= user.name %>, Email: <%= user.email %> </li>
+      <% }) %>
+    </ul>
+  </body>
+</html>
