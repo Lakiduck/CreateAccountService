@@ -24,6 +24,15 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 app.get('/', function(req, res){
+    res.redirect('/login');
+});
+
+app.get('/login', function(req, res){
+  res.render('login');
+});
+
+
+app.get('/createAccount', function(req, res){
   res.render('createAccount');
 });
 
@@ -36,7 +45,7 @@ app.get('/accountDashBoard', function(req, res){
   });
 })
 
-app.post('/', urlencodedParser, function(req, res){
+app.post('/creatAccount', urlencodedParser, function(req, res){
   console.log(req.body);
   if(req.body.password === req.body.confirm){
     res.render('success', {user: req.body});
