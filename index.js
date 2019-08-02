@@ -32,20 +32,32 @@ app.get('/login', function(req, res){
 });
 
 
-app.get('/createAccount', function(req, res){
+app.get('/createaccount', function(req, res){
   res.render('createAccount');
 });
 
-app.get('/accountDashBoard', function(req, res){
+app.get('/accountdashboard', function(req, res){
   User.find({}, function(err, data){
     if(err){
       throw err;
     }
     res.render('accountdashboard', {users: data});
   });
-})
+});
 
-app.post('/creatAccount', urlencodedParser, function(req, res){
+app.post('/accountdashboard', urlencodedParser ,function(req, res){
+  console.log(req.body.search);
+  var u;
+  const q = User.findOne({email: req.body.search}).then(function(result){
+      do{
+        u = result;
+      } while(u === undefined);
+      console.log(u);
+      res.render('searchedAccount', {user: u});
+  });
+});
+
+app.post('/createaccount', urlencodedParser, function(req, res){
   console.log(req.body);
   if(req.body.password === req.body.confirm){
     res.render('success', {user: req.body});

@@ -4,6 +4,10 @@
     <title>Account Dashboard</title>
   </head>
   <body>
+    <form id="searchForm" method="post" action="/accountdashboard">
+      <input type="text" name="search" placeholder="Enter user email here"/>
+      <input type="submit"/>
+    </form>
     <ul>
       <% users.forEach(function(user){ %>
         <li> User: <%= user.name %>, Email: <%= user.email %> </li>
