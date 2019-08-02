@@ -46,11 +46,8 @@ app.get('/accountdashboard', function(req, res){
 });
 
 app.post('/accountdashboard', urlencodedParser ,function(req, res){
-  console.log(req.body.search);
-  var u;
   User.findOne({email: req.body.search}).then(function(result){
-      u = result;
-      res.render('searchedAccount', {user: u});
+      res.render('searchedAccount', {user: result});
   });
 });
 
